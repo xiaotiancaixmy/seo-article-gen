@@ -1,5 +1,5 @@
 # Fill in your OpenRouter API key and preferred model name
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 
 # Models for different steps
 KEYWORD_MODEL = "perplexity/llama-3.1-sonar-large-128k-online"

@@ -22,7 +22,7 @@ metadata_csv = os.path.join(output_dir, "metadata.csv")
 os.makedirs(article_dir, exist_ok=True)
 
 def main():
-    print("🚀 Step 1: Generating keywords from Twitter...")
+    print("🚀 Step 1: Generating keywords from website...")
     generate_keywords_via_openrouter(client, KEYWORD_MODEL, keyword_csv)
 
     print("📝 Step 2: Generating titles...")
