@@ -1,5 +1,21 @@
 import os, csv
 import random
+import glob
+
+def get_random_image_url(github_username="xiaotiancaixmy", repo_name="seo-article-gen", branch="main"):
+    """随机选择一张图片并返回GitHub raw链接"""
+    image_dir = "pixabay_ai_images"
+    image_files = glob.glob(f"{image_dir}/*.webp")
+    
+    if image_files:
+        # 随机选择一张图片
+        selected_image = random.choice(image_files)
+        # 获取文件名
+        filename = os.path.basename(selected_image)
+        # 生成GitHub raw链接
+        github_url = f"https://raw.githubusercontent.com/{github_username}/{repo_name}/{branch}/{image_dir}/{filename}"
+        return github_url
+    return None
 
 def generate_articles_from_outlines(client, model_name, input_file, output_dir, metadata_file):
     with open(input_file, 'r', newline='', encoding='utf-8') as f:
@@ -16,6 +32,31 @@ def generate_articles_from_outlines(client, model_name, input_file, output_dir, 
         
     for i, outline in enumerate(outlines):
         random_seed = random.randint(1, 1000)
+        
+        # 为每篇文章生成3-5张随机图片URL
+        image_urls = []
+        for _ in range(random.randint(3, 5)):
+            url = get_random_image_url()
+            if url:
+                image_urls.append(url)
+        
+        # 将图片URL添加到prompt中
+        image_instructions = ""
+        if image_urls:
+            image_instructions = f"""
+        
+        6. Include relevant images throughout the article using these URLs:
+           {chr(10).join([f'   - {url}' for url in image_urls])}
+           
+           Use this format for images:
+           ![Alt text description]({image_urls[0]})
+           
+           Place images strategically:
+           - One at the beginning after the title
+           - One in each major section
+           - Use descriptive alt text related to the content
+        """
+        
         prompt = f"""
         Generate a comprehensive SEO-optimized article in Markdown format following the provided outline. The article should be >2,000 words, written in a third-person, educational tone.
 
@@ -64,6 +105,7 @@ def generate_articles_from_outlines(client, model_name, input_file, output_dir, 
            ### Question 2?
            Answer to question 2...
            ```
+        {image_instructions}
 
         Use random seed: {random_seed} to ensure unique content.
         Remember to:
@@ -73,6 +115,7 @@ def generate_articles_from_outlines(client, model_name, input_file, output_dir, 
         - Add horizontal rules (---) between major sections
         - Use consistent formatting throughout the article
         """
+        
         response = client.chat.completions.create(
             model=model_name,
             messages=[{"role": "user", "content": prompt}],
@@ -97,6 +140,7 @@ def generate_articles_from_outlines(client, model_name, input_file, output_dir, 
         if total_words < 2000:
             rewrite_prompt = f"""
             Please rewrite the article to ensure it is between 2000-3000 words, while maintaining the focus on the original topic. Use this outline as reference: {outline}
+            Include the same images from the original article.
             """
             rewrite_response = client.chat.completions.create(
                 model=model_name,
@@ -125,4 +169,4 @@ def generate_articles_from_outlines(client, model_name, input_file, output_dir, 
             total_words = len(rewritten_article.split())
             print(f"重写后文章 {i+1} 字数: {total_words}")
     
-    print
+    print(f"\n🎉 所有文章已生成完成！文件保存在: {article_file}")
