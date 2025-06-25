@@ -12,14 +12,13 @@ def generate_titles_from_keywords(client, model_name, input_file, output_file):
         random_seed = random.randint(1, 1000)
         prompt = f"""
         Generate 2 educational article titles for the keyword: {keyword}
-        The titles should follow these patterns:
-        1. "What is [keyword]? A Comprehensive Guide"
-        2. "How to [keyword]: Tips and Best Practices"
-        3. "Understanding [keyword]: A Beginner's Guide"
+ 
 
         Use random seed: {random_seed} to ensure unique results.
         Make the titles engaging and SEO-friendly. Focus on educational and informative content.
         Output each title on a new line without any additional text or numbering.
+        make sure only output only titles. Nothing else.
+        and the concept need to be more wiki like.
         """
         response = client.chat.completions.create(
             model=model_name,

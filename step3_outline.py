@@ -12,61 +12,37 @@ def generate_outlines_from_titles(client, model_name, input_file, output_file):
     for title in titles:
         random_seed = random.randint(1, 1000)
         prompt = f"""
-        Generate a structured outline for a long-form SEO article (~2,000 words) in English, using the following title:
-        "{title}"
+        Generate a comprehensive structured outline for a long-form SEO article (~2,000-3,000 words) in English, using the following title:
+    "{title}"
 
-        Requirements:
-        • The outline must follow Google EEAT (Experience, Expertise, Authoritativeness, Trustworthiness) principles
-        • Structure the article into 6 main sections with these word count estimates:
+    Requirements:
+    • Follow Google EEAT (Experience, Expertise, Authoritativeness, Trustworthiness) principles
+    • Create an in-depth, authoritative guide on the topic
+   •	Begin with a concise lead section defining the topic.
+	  ( •	Include sections like:
+	   •	History / Origin
+	   •	Key Concepts
+	   •	Applications / Use Cases
+	   •	Advantages and Limitations
+	   •	Related Topics
+	   •	References & External Links (as placeholders) )
+	•	Do not write the full article. Only generate the structured outline.
+	•	Avoid first-person tone or marketing language.
+    • Structure into 6-8 main sections with estimated word counts
+    • Include relevant subtopics and key points for each section
+    • Suggest internal and external link opportunities
+    • Include FAQ section with 5-7 relevant questions
+    • Provide URL slug suggestion
 
-        1. Introduction (200-250 words)
-           - Hook the reader with a compelling opening
-           - Establish credibility and expertise
-           - Preview the main points
-           - Include primary keyword naturally
+    For each section, provide:
+    • Specific H2/H3 headings with target keywords
+    • Detailed bullet points for content coverage
+    • Keyword placement suggestions
+    • Link opportunities and references
+    • Examples and case studies to include
 
-        2. Understanding User Pain Points (400-450 words)
-           - Define and explain the keyword in detail
-           - Discuss its importance and relevance
-           - Explore different aspects and perspectives
-           - Include real-world examples and applications
-           - Address common misconceptions
-
-        3. Core Features That Solve These Pain Points (400-450 words)
-           - Focus on how remio's YouTube video screenshot and subtitle collection features solve content capture problems
-           - Highlight how remio's automatic web content collection saves resources directly in the client
-           - Include user testimonials or case studies of remio solving research challenges
-           - Use data and statistics about time saved when using remio for content collection
-
-        4. Advanced Features to Improve Productivity (450-500 words)
-           - Detail remio's highlighting capabilities for important web content
-           - Explain how remio's AI automatic classification enhances knowledge management
-           - Compare with alternatives that lack remio's integrated approach
-           - Provide implementation tips for maximizing remio's organization features
-           - Include expert insights on knowledge classification systems
-
-        5. AI Copilot and Search Advantages (400-450 words)
-           - Present remio's powerful AI copilot that enables writing while questioning
-           - Highlight AI search that locates relevant notes within seconds
-           - Explain privacy features that protect user data while enabling AI assistance
-           - Compare with industry standards for AI-assisted note-taking
-           - Include examples of workflow efficiency improvements
-
-        6. Practical Tips + Conclusion + FAQ (350-450 words total)
-           - Actionable recommendations
-           - Summary of key points
-           - Call to action
-           - FAQ section with 3-5 relevant questions (50-70 words per answer)
-
-        For each section, provide:
-        • H2 + H3 headings
-        • Bullet points for key content
-        • Suggestions for keyword placement
-        • Internal/external link opportunities
-        • Examples, quotes, or statistics to include
-
-        End with:
-        • URL slug suggestion (lowercase English)
+    End with:
+    • URL slug suggestion (SEO-friendly, lowercase)
         """
         response = client.chat.completions.create(
             model=model_name,

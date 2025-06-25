@@ -15,7 +15,7 @@ class PixabayImageDownloader:
         if not os.path.exists(self.download_folder):
             os.makedirs(self.download_folder)
     
-    def search_images(self, query, per_page=50, image_type="photo", category="science", orientation="horizontal"):
+    def search_images(self, query, per_page=100, image_type="photo", category="science", orientation="horizontal"):
         """
         搜索Pixabay图片
         """
@@ -82,11 +82,11 @@ class PixabayImageDownloader:
         """
         # 科技感相关的搜索关键词（排除机器人相关）
         tech_keywords = [
-            "artificial intelligence technology",
-            "digital technology",
-            "data visualization",
-            "neural network visualization",
-            "machine learning algorithm",
+            "hardware technology",
+            "keyboard",
+            "technology",
+            "fiber cable",
+            "workspace",
             "computer science technology",
             "digital transformation",
             "tech innovation",
