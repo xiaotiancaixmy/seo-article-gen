@@ -4,7 +4,7 @@ import random
 import time
 import hashlib
 
-def generate_keywords_via_openrouter(client, model_name, output_file, num_keywords=2, knowledge_scope="AI技术"):
+def generate_keywords(client, model_name, output_file, num_keywords=2, knowledge_scope="technology", topic=None):
     # 使用多重随机化策略确保每次结果不同
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     microsecond_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
@@ -67,8 +67,11 @@ def generate_keywords_via_openrouter(client, model_name, output_file, num_keywor
     selected_timeframe = random.choice(random_timeframes)
     
     # 修改prompt，要求生成可分割的关键词
+    # 在prompt中添加主题相关内容
+    topic_context = f"\nSpecific topic focus: {topic}" if topic else ""
+    
     prompt = f"""
-    As a trend analyst specializing in {knowledge_scope}, identify the {num_keywords} most trending and popular keywords from X (Twitter) & reddit & medium discussions at {current_time}. 
+    As a trend analyst specializing in {knowledge_scope}, identify the {num_keywords} most trending and popular keywords from X (Twitter) & reddit & medium discussions at {current_time}.{topic_context}
     
     Analyze {selected_perspective} and focus on topics {selected_timeframe}.
     
@@ -78,6 +81,7 @@ def generate_keywords_via_openrouter(client, model_name, output_file, num_keywor
     Requirements:
     - Return EXACTLY {num_keywords} keywords from different categories above
     - Keywords must be currently trending and relevant to {knowledge_scope}
+    {f"- All keywords should be related to or inspired by: {topic}" if topic else ""}
     - Consider topics with high search volume and viral discussions (unique seed: {combined_seed})
     - Focus on emerging topics and developments in {knowledge_scope}
     - Look for sudden spikes in discussion and engagement
@@ -101,36 +105,24 @@ def generate_keywords_via_openrouter(client, model_name, output_file, num_keywor
         seed=combined_seed  # 使用组合种子
     )
     
-    # 处理关键词，确保格式适合图片匹配
+    # 处理关键词，确保每个关键词单独保存
     raw_keywords = [k.strip('- ') for k in response.choices[0].message.content.strip().split('\n') 
                   if k.strip() and not k.startswith('#') and not k.startswith('##')][:num_keywords]
     
     processed_keywords = []
     for keyword_line in raw_keywords:
         if keyword_line:
-            # 如果包含逗号，保持原样；否则智能分割
+            # 如果包含逗号，按逗号分割成多个关键词
             if ',' in keyword_line:
-                processed_keywords.append(keyword_line.lower())
+                # 按逗号分割并清理每个关键词
+                split_keywords = [k.strip().lower() for k in keyword_line.split(',') if k.strip()]
+                processed_keywords.extend(split_keywords)
             else:
-                # 智能分割单个关键词
-                import re
-                # 按空格、下划线或驼峰命名分割
-                if ' ' in keyword_line:
-                    split_words = keyword_line.split(' ')
-                elif '_' in keyword_line:
-                    split_words = keyword_line.split('_')
-                else:
-                    # 尝试按驼峰命名分割
-                    split_words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z][a-z]|\b)', keyword_line)
-                    if not split_words:
-                        split_words = [keyword_line]
-                
-                # 过滤并组合
-                valid_words = [w.strip().lower() for w in split_words if w.strip() and len(w.strip()) > 1]
-                if valid_words:
-                    processed_keywords.append(','.join(valid_words))
+                # 单个关键词直接添加
+                processed_keywords.append(keyword_line.strip().lower())
     
     # 保存到CSV文件
+    import csv
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(['Keyword'])

@@ -16,6 +16,7 @@ def generate_titles_from_keywords(client, model_name, input_file, output_file):
 
         Use random seed: {random_seed} to ensure unique results.
         Make the titles engaging and SEO-friendly. Focus on educational and informative content.
+        title need to be catch the attention of the reader, and lead readers into the topic.
         Output each title on a new line without any additional text or numbering.
         make sure only output only titles. Nothing else.
         and the concept need to be more wiki like.

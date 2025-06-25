@@ -16,7 +16,7 @@ def generate_article_content(client, model_name, outline, title, selected_images
 
     # Build detailed article generation prompt
     prompt = f"""
-You are a professional SEO content writing expert. Please generate a high-quality SEO-optimized article based on the following outline and title.
+You are a professional SEO content writing expert. Please generate a high-quality SEO-optimized article based on the following outline and title. 
 
 **Article Title**: {title}
 **Article Outline**: {outline}
@@ -33,6 +33,9 @@ You are a professional SEO content writing expert. Please generate a high-qualit
    - Target word count: 2500-3500 words
    - Content must be original, valuable, and in-depth
    - Avoid repetition and filler content
+   - Avoid AI-sounding phrases and make the writing feel natural and human-written. 
+   - Use clear, engaging, and professional language, as if written by a subject-matter expert.
+   - Do not include filler sentences or generic statements. Prioritize clarity, depth, and flow.
    - Each paragraph must contain substantial content
    - Provide specific examples and practical advice
 

@@ -1,0 +1,109 @@
+title,reference_type,search_keywords,expected_info,usage_purpose,raw_content
+Mastering Graph Neural Networks: From Basics to Advanced Applications in Deep Learning,General Material,Mastering Graph Neural Networks: From Basics to Advanced Applications in Deep Learning,Related background information and data,Support article content,"```json
+{
+  ""references"": [
+    {
+      ""type"": ""Official Documentation"",
+      ""search_keywords"": ""PyTorch Geometric documentation"",
+      ""expected_info"": ""Installation and usage guides for PyTorch Geometric, coding examples for building GNNs"",
+      ""usage_purpose"": ""To provide detailed instructions on setting up and using PyTorch Geometric for GNN development""
+    },
+    {
+      ""type"": ""Official Documentation"",
+      ""search_keywords"": ""DGL documentation training graph neural networks"",
+      ""expected_info"": ""Guides on training GNNs for various tasks like node classification, edge classification, and link prediction"",
+      ""usage_purpose"": ""To explain the training processes and best practices for different GNN applications""
+    },
+    {
+      ""type"": ""Academic Research"",
+      ""search_keywords"": ""Graph Neural Networks tutorial Distill.pub"",
+      ""expected_info"": ""Comprehensive introduction to modern GNNs, including types and applications"",
+      ""usage_purpose"": ""To provide a foundational understanding of GNNs and their modern applications""
+    },
+    {
+      ""type"": ""Academic Research"",
+      ""search_keywords"": ""Graph Neural Networks: Foundation, Frontiers and Applications book"",
+      ""expected_info"": ""Fundamental concepts, new research frontiers, and broad applications of GNNs"",
+      ""usage_purpose"": ""To delve into the theoretical and practical aspects of GNNs, including emerging research and applications""
+    },
+    {
+      ""type"": ""Expert Opinion"",
+      ""search_keywords"": ""Case studies of GNN applications in industry"",
+      ""expected_info"": ""Real-world examples of GNN implementations in various industries such as social networks, recommendation systems, and bioinformatics"",
+      ""usage_purpose"": ""To illustrate practical applications and successes of GNNs in different sectors""
+    },
+    {
+      ""type"": ""Statistical Data"",
+      ""search_keywords"": ""Industry statistics on adoption and impact of GNNs"",
+      ""expected_info"": ""Data on the growth, adoption rates, and performance metrics of GNNs in various industries"",
+      ""usage_purpose"": ""To quantify the impact and trends of GNNs in real-world scenarios""
+    },
+    {
+      ""type"": ""News Trends"",
+      ""search_keywords"": ""Recent advancements and trends in Graph Neural Networks"",
+      ""expected_info"": ""Latest research breakthroughs, new applications, and future directions of GNNs"",
+      ""usage_purpose"": ""To keep the content up-to-date with the latest developments and trends in the field of GNNs""
+    },
+    {
+      ""type"": ""Academic Research"",
+      ""search_keywords"": ""GitHub tutorials on Graph Neural Networks"",
+      ""expected_info"": ""Hands-on tutorials and code examples for implementing GNNs"",
+      ""usage_purpose"": ""To provide practical examples and coding exercises for readers to practice building GNNs""
+    }
+  ]
+}
+```"
+"Unlocking the Potential of GANs in Education: Applications, Benefits, and Ethical Considerations",General Material,"Unlocking the Potential of GANs in Education: Applications, Benefits, and Ethical Considerations",Related background information and data,Support article content,"```json
+{
+  ""references"": [
+    {
+      ""type"": ""Official Documentation"",
+      ""search_keywords"": ""GANs in education, educational research, Generative Adversarial Networks applications"",
+      ""expected_info"": ""Applications, benefits, and integration of GANs in educational research"",
+      ""usage_purpose"": ""To understand the official stance and documented uses of GANs in educational settings.""
+    },
+    {
+      ""type"": ""Academic Research"",
+      ""search_keywords"": ""GANs in educational research, synthetic data generation, educational data analysis"",
+      ""expected_info"": ""Detailed studies and experiments on using GANs for generating synthetic educational data and analyzing educational outcomes"",
+      ""usage_purpose"": ""To provide evidence and insights from academic studies on the effectiveness and methods of using GANs in education.""
+    },
+    {
+      ""type"": ""Academic Research"",
+      ""search_keywords"": ""Bethencourt-Aguilar, GANs in education, educational data protection"",
+      ""expected_info"": ""Specific studies on protecting anonymity and extending real sample sizes using GANs in educational research"",
+      ""usage_purpose"": ""To cite specific research that highlights the benefits and methods of using GANs for data protection and sample size extension in education.""
+    },
+    {
+      ""type"": ""Expert Opinion"",
+      ""search_keywords"": ""GANs in education, expert insights, educational technology"",
+      ""expected_info"": ""Opinions from experts in the field of educational technology on the potential, challenges, and ethical considerations of using GANs"",
+      ""usage_purpose"": ""To include expert viewpoints and practical experiences in implementing GANs in educational contexts.""
+    },
+    {
+      ""type"": ""Statistical Data"",
+      ""search_keywords"": ""education technology statistics, GANs adoption rates, educational data augmentation"",
+      ""expected_info"": ""Statistics on the adoption and impact of GANs in educational institutions, as well as data on the effectiveness of GAN-generated data"",
+      ""usage_purpose"": ""To support arguments with quantitative data on the adoption and benefits of GANs in education.""
+    },
+    {
+      ""type"": ""Official Documentation"",
+      ""search_keywords"": ""IBM GANs, educational applications, machine learning in education"",
+      ""expected_info"": ""Official documentation from reputable companies like IBM on the applications and benefits of GANs in educational settings"",
+      ""usage_purpose"": ""To leverage industry insights and official resources to validate the applications and benefits of GANs in education.""
+    },
+    {
+      ""type"": ""News Trends"",
+      ""search_keywords"": ""GANs in education news, trends in educational technology, AI in education"",
+      ""expected_info"": ""Recent news and trends on the integration of GANs and other AI technologies in educational systems"",
+      ""usage_purpose"": ""To stay updated on the latest developments and trends in using GANs in education.""
+    },
+    {
+      ""type"": ""Expert Opinion"",
+      ""search_keywords"": ""ethical considerations of GANs, AI ethics in education, data privacy"",
+      ""expected_info"": ""Expert opinions on the ethical implications of using GANs in education, including data privacy and fairness concerns"",
+      ""usage_purpose"": ""To address the ethical considerations and potential challenges associated with the use of GANs in educational contexts.""
+    }
+  ]
+}
+```"
